@@ -26,8 +26,8 @@ class LatestService extends CoreService {
     }
 
     Document? document = await getBodyFromUrl(url);
-
     List<Map<String, String>> result = [];
+
     if (document != null) {
       List<Element> root = document.querySelectorAll('#Terbaru > .ls4w > .ls4');
       for (Element elm in root) {
