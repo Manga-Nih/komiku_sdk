@@ -59,4 +59,41 @@ void main() {
       expectResult(listManhwa);
     });
   });
+
+  group('Komiku all manga by genre', () {
+    test('Get all manga by genre "romance"', () async {
+      List<Manga> listManga =
+          await komiku.allMangaByGenre(genreEndpoint: 'romance');
+
+      expectResult(listManga);
+    });
+
+    test('Get all manga by genre "romance" in page 5', () async {
+      List<Manga> listManga =
+          await komiku.allMangaByGenre(genreEndpoint: 'romance');
+
+      expectResult(listManga);
+    });
+
+    test('Get all manga by genre "comedy"', () async {
+      List<Manga> listManga =
+          await komiku.allMangaByGenre(genreEndpoint: 'comedy');
+
+      expectResult(listManga);
+    });
+
+    test('Get all manga by genre "comedy" in page 5', () async {
+      List<Manga> listManga =
+          await komiku.allMangaByGenre(genreEndpoint: 'comedy');
+
+      expectResult(listManga);
+    });
+
+    test('Get all manga by genre "romancexxxxx"', () async {
+      List<Manga> listManga =
+          await komiku.allMangaByGenre(genreEndpoint: 'romancexxxxx');
+
+      expect(listManga.length, 0);
+    });
+  });
 }

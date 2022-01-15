@@ -13,14 +13,14 @@ class Komiku {
   final SearchService _searchService = SearchService();
   final MangaService _mangaService = MangaService();
 
-  /// Get latest manga/manhwa/manhua.
+  /// Get latest manga/manhua/manhwa.
   /// If mangaType variable not fill it.
   /// Its will be retrieve latest manga, manhwa and manhua.
   Future<List<LatestManga>> latest({MangaType? mangaType}) {
     return _latestService.latest(mangaType);
   }
 
-  /// Get popular manga/manhwa/manhua.
+  /// Get popular manga/manhua/manhwa.
   /// If mangaType variable not fill it.
   /// Its will be retrieve popular manga, manhwa and manhua.
   ///
@@ -47,5 +47,11 @@ class Komiku {
   /// Get all manhwa.
   Future<List<Manga>> allManhwa({int? page}) {
     return _mangaService.allManga(page, MangaType.manhwa);
+  }
+
+  /// Get all manga/manhua/manhwa by genre.
+  Future<List<Manga>> allMangaByGenre(
+      {int? page, required String genreEndpoint}) {
+    return _mangaService.allMangaByGenre(page, genreEndpoint);
   }
 }

@@ -10,7 +10,23 @@ class MangaService extends CoreService with MangaParser {
     String pageNumber = (page ?? 1).toString();
     String url = pageNumber == '1'
         ? '${KomikuUrl.baseUrl2}/pustaka/?orderby=modified&genre&genre2&status&category_name=${mangaType.name}'
-        : '${KomikuUrl.baseUrl2}/pustaka/page/${pageNumber}/?orderby=modified&genre&genre2&status&category_name=${mangaType.name}';
+        : '${KomikuUrl.baseUrl2}/pustaka/page/$pageNumber/?orderby=modified&genre&genre2&status&category_name=${mangaType.name}';
+
+    Document? document = await getBodyFromUrl(url);
+    List<Map<String, String?>> result = [];
+
+    if (document != null) {
+      result.addAll(mangaDomToMap(document));
+    }
+
+    return Manga.fromJson(result);
+  }
+
+  Future<List<Manga>> allMangaByGenre(int? page, String genreEndpoint) async {
+    String pageNumber = (page ?? 1).toString();
+    String url = pageNumber == '1'
+        ? '${KomikuUrl.baseUrl2}/pustaka/?orderby=modified&genre=$genreEndpoint&genre2&status&category_name'
+        : '${KomikuUrl.baseUrl2}/pustaka/page/$pageNumber/?orderby=modified&genre=$genreEndpoint&genre2&status&category_name';
 
     Document? document = await getBodyFromUrl(url);
     List<Map<String, String?>> result = [];
