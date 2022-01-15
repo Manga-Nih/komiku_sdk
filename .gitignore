@@ -27,3 +27,6 @@
 .dart_tool/
 .packages
 build/
+
+# Main file for debugging
+lib/main.dart
