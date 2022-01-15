@@ -15,4 +15,7 @@ class Util {
 
   static String toCapital(String str) =>
       str[0].toUpperCase() + str.substring(1, str.length);
+
+  static String toSlug(String str) =>
+      str.toLowerCase().replaceAll(RegExp(r' '), '-');
 }

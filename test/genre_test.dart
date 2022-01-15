@@ -3,12 +3,12 @@ import 'package:komiku_sdk/models.dart';
 
 void main() {
   test('Get existing genre', () {
-    String? genre = Genre.find('comedy');
-    expect(genre, 'Comedy');
+    Genre? genre = Genre.find('comedy');
+    expect(genre, isNot(null));
   });
 
   test('Get don\'t exist genre', () {
-    String? genre = Genre.find('comedyasdadas');
+    Genre? genre = Genre.find('comedyasdadas');
     expect(genre, null);
   });
 

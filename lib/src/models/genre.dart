@@ -1,6 +1,11 @@
 library komiku_sdk;
 
+import 'package:komiku_sdk/src/helpers/Util.dart';
+
 class Genre {
+  final String name;
+  final String endpoint;
+
   static final List<String> _genreList = [
     '4-Koma',
     'Action',
@@ -67,17 +72,33 @@ class Genre {
     'Yuri',
   ];
 
+  Genre({
+    required this.name,
+    required this.endpoint,
+  });
+
   static List<String> all() {
     return _genreList;
   }
 
-  static String? find(String genre) {
+  static Genre? find(String genre) {
     try {
-      return _genreList.firstWhere(
+      String result = _genreList.firstWhere(
         (element) => element.toLowerCase() == genre.toLowerCase(),
       );
+
+      return Genre(name: result, endpoint: Util.toSlug(result));
     } catch (e) {
       return null;
     }
+  }
+
+  @override
+  String toString() {
+    String print = 'Genre';
+    print += '\n Name\t\t: $name';
+    print += '\n Endpoint\t: $endpoint';
+
+    return print;
   }
 }
