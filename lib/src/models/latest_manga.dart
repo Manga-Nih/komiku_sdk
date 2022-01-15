@@ -4,16 +4,17 @@ import 'package:komiku_sdk/src/helpers/formatter.dart';
 import 'package:komiku_sdk/src/models/core_manga.dart';
 
 class LatestManga extends CoreManga {
-  final String? chapterEndpoint;
+  final String release;
+  final String chapterEndpoint;
 
   LatestManga({
     required String title,
     required String thumb,
     required MangaType type,
-    required String release,
-    String? detailEndpoint,
-    this.chapterEndpoint,
-  }) : super(title, thumb, type, release, detailEndpoint);
+    required String detailEndpoint,
+    required this.release,
+    required this.chapterEndpoint,
+  }) : super(title, thumb, type, detailEndpoint);
 
   static List<LatestManga> fromJson(List<Map<String, String?>> listJson) {
     List<LatestManga> list = [];
@@ -28,10 +29,10 @@ class LatestManga extends CoreManga {
           release: elm['release'] ?? '',
           detailEndpoint: elm['detail_endpoint'] != null
               ? Formatter.detailTrim(elm['detail_endpoint']!)
-              : null,
+              : '',
           chapterEndpoint: elm['chapter_endpoint'] != null
               ? Formatter.chapterTrim(elm['chapter_endpoint']!)
-              : null,
+              : '',
         ),
       );
     }

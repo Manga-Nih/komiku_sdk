@@ -5,17 +5,18 @@ import 'package:komiku_sdk/src/models/core_manga.dart';
 
 class PopularManga extends CoreManga {
   final String reader;
+  final String release;
   final String? chapterEndpoint;
 
   PopularManga({
     required String title,
     required String thumb,
     required MangaType type,
-    required String release,
-    String? detailEndpoint,
-    this.chapterEndpoint,
+    required String detailEndpoint,
+    required this.release,
     required this.reader,
-  }) : super(title, thumb, type, release, detailEndpoint);
+    this.chapterEndpoint,
+  }) : super(title, thumb, type, detailEndpoint);
 
   static List<PopularManga> fromJson(List<Map<String, String?>> listJson) {
     List<PopularManga> list = [];
@@ -30,7 +31,7 @@ class PopularManga extends CoreManga {
           release: elm['release'] ?? '',
           detailEndpoint: elm['detail_endpoint'] != null
               ? Formatter.detailTrim(elm['detail_endpoint']!)
-              : null,
+              : '',
           chapterEndpoint: elm['chapter_endpoint'] != null
               ? Formatter.chapterTrim(elm['chapter_endpoint']!)
               : null,
