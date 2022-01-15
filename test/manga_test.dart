@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/src/enums/manga_type.dart';
-import 'package:komiku_sdk/src/models/popular_manga.dart';
 import 'package:komiku_sdk/src/models/manga.dart';
 
 void main() {

@@ -1,6 +1,5 @@
 import 'package:komiku_sdk/src/constants/komiku_url.dart';
 import 'package:komiku_sdk/src/enums/manga_type.dart';
-import 'package:komiku_sdk/src/helpers/util.dart';
 import 'package:komiku_sdk/src/models/popular_manga.dart';
 import 'package:komiku_sdk/src/services/core_service.dart';
 import 'package:universal_html/html.dart';
