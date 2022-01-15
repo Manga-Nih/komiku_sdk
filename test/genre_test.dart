@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:komiku_sdk/constants/genre.dart';
+import 'package:komiku_sdk/models/genre.dart';
 
 void main() {
   test('Get existing genre', () {
