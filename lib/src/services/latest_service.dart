@@ -6,7 +6,25 @@ import 'package:universal_html/html.dart';
 
 class LatestService extends CoreService {
   Future<List<LatestManga>> latest(MangaType? mangaType) async {
-    String url = KomikuUrl.baseUrl;
+    late String url;
+
+    switch (mangaType) {
+      case MangaType.manga:
+        url = KomikuUrl.mangaHomeUrl;
+        break;
+
+      case MangaType.manhua:
+        url = KomikuUrl.manhuaHomeUrl;
+        break;
+
+      case MangaType.manhwa:
+        url = KomikuUrl.manhwaHomeUrl;
+        break;
+
+      default:
+        url = KomikuUrl.baseUrl;
+    }
+
     Document? document = await getBodyFromUrl(url);
 
     List<Map<String, String>> result = [];
