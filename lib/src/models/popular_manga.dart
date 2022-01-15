@@ -9,29 +9,29 @@ class PopularManga extends CoreManga {
   PopularManga(
     String title,
     String thumb,
-    MangaType? type,
+    MangaType type,
     String release,
-    String detailEndpoint,
-    String chapterEndpoint,
+    String? detailEndpoint,
+    String? chapterEndpoint,
     this.reader,
   ) : super(title, thumb, type, release, detailEndpoint, chapterEndpoint);
 
-  static List<PopularManga> fromJson(List<Map<String, String>> listJson) {
+  static List<PopularManga> fromJson(List<Map<String, String?>> listJson) {
     List<PopularManga> list = [];
 
-    for (Map<String, String> elm in listJson) {
+    for (Map<String, String?> elm in listJson) {
       list.add(
         PopularManga(
           elm['title'] ?? '',
           elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
-          elm['type'] != null ? Util.getType(elm['type']!) : null,
+          elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
           elm['release'] ?? '',
           elm['detail_endpoint'] != null
               ? Formatter.detailTrim(elm['detail_endpoint']!)
-              : '',
+              : null,
           elm['chapter_endpoint'] != null
               ? Formatter.chapterTrim(elm['chapter_endpoint']!)
-              : '',
+              : null,
           elm['reader'] ?? '',
         ),
       );
@@ -42,10 +42,10 @@ class PopularManga extends CoreManga {
 
   @override
   String toString() {
-    String print = 'Latest Manga';
+    String print = 'Popular Manga';
     print += '\n Title\t\t\t: $title';
     print += '\n Thumbnail\t\t: $thumb';
-    print += '\n Type\t\t\t: $type';
+    print += '\n Type\t\t\t: ${Util.toCapital(type.name)}';
     print += '\n Reader\t\t\t: $reader';
     print += '\n Release\t\t: $release';
     print += '\n Detail Endpoint\t: $detailEndpoint';

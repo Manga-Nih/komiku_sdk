@@ -13,7 +13,7 @@ void main() {
       for (var latest in latests) {
         expect(latest.title, isNot(''));
         expect(latest.thumb, isNot(''));
-        expect(latest.type, isNot(null));
+        expect(latest.type, isNot(MangaType.none));
         expect(latest.release, isNot(''));
         expect(latest.detailEndpoint, isNot(''));
         expect(latest.chapterEndpoint, isNot(''));

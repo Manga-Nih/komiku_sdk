@@ -12,4 +12,7 @@ class Util {
 
     return mangaType;
   }
+
+  static String toCapital(String str) =>
+      str[0].toUpperCase() + str.substring(1, str.length);
 }
