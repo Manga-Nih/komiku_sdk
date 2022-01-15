@@ -23,6 +23,7 @@ void main() {
     test('Get latest', () async {
       List<LatestManga> latests = await komiku.latest();
 
+      expect(latests.length, isNot(0));
       expectResult(latests);
     });
 
@@ -30,6 +31,7 @@ void main() {
       List<LatestManga> latests =
           await komiku.latest(mangaType: MangaType.manga);
 
+      expect(latests.length, isNot(0));
       expectResult(latests);
     });
 
@@ -37,6 +39,7 @@ void main() {
       List<LatestManga> latests =
           await komiku.latest(mangaType: MangaType.manhua);
 
+      expect(latests.length, isNot(0));
       expectResult(latests);
     });
 
@@ -44,6 +47,7 @@ void main() {
       List<LatestManga> latests =
           await komiku.latest(mangaType: MangaType.manhwa);
 
+      expect(latests.length, isNot(0));
       expectResult(latests);
     });
   });

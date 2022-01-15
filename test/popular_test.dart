@@ -24,6 +24,7 @@ void main() {
     test('Get popular', () async {
       List<PopularManga> popular = await komiku.popular();
 
+      expect(popular.length, isNot(0));
       expectResult(popular);
     });
 
@@ -31,6 +32,7 @@ void main() {
       List<PopularManga> popular =
           await komiku.popular(mangaType: MangaType.manga);
 
+      expect(popular.length, isNot(0));
       expectResult(popular);
     });
 
@@ -38,6 +40,7 @@ void main() {
       List<PopularManga> popular =
           await komiku.popular(mangaType: MangaType.manhua);
 
+      expect(popular.length, isNot(0));
       expectResult(popular);
     });
 
@@ -45,6 +48,7 @@ void main() {
       List<PopularManga> popular =
           await komiku.popular(mangaType: MangaType.manhwa);
 
+      expect(popular.length, isNot(0));
       expectResult(popular);
     });
   });

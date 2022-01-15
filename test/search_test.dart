@@ -27,13 +27,21 @@ void main() {
     test('Get search manga with keyword "one piece"', () async {
       List<Manga> search = await komiku.search(keyword: 'one piece');
 
+      expect(search.length, isNot(0));
       expectResult(search);
     });
 
     test('Get search manga with keyword "boku"', () async {
       List<Manga> search = await komiku.search(keyword: 'boku');
 
+      expect(search.length, isNot(0));
       expectResult(search);
+    });
+
+    test('Get search manga with keyword "bokuxxx"', () async {
+      List<Manga> search = await komiku.search(keyword: 'bokuxxx');
+
+      expect(search.length, 0);
     });
   });
 }
