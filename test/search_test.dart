@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/src/enums/manga_type.dart';
 import 'package:komiku_sdk/src/models/popular_manga.dart';
-import 'package:komiku_sdk/src/models/search_manga.dart';
+import 'package:komiku_sdk/src/models/manga.dart';
 
 void main() {
   late Komiku komiku;
@@ -10,7 +10,7 @@ void main() {
   setUp(() => komiku = Komiku());
 
   group('Komiku search manga', () {
-    expectResult(List<SearchManga> listSearch) {
+    expectResult(List<Manga> listSearch) {
       for (var search in listSearch) {
         expect(search.title, isNot(''));
         expect(search.thumb, isNot(''));
@@ -25,13 +25,13 @@ void main() {
     }
 
     test('Get search manga with keyword "one piece"', () async {
-      List<SearchManga> search = await komiku.search(keyword: 'one piece');
+      List<Manga> search = await komiku.search(keyword: 'one piece');
 
       expectResult(search);
     });
 
     test('Get search manga with keyword "boku"', () async {
-      List<SearchManga> search = await komiku.search(keyword: 'boku');
+      List<Manga> search = await komiku.search(keyword: 'boku');
 
       expectResult(search);
     });

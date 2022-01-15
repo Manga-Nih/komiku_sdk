@@ -3,14 +3,14 @@ import 'package:komiku_sdk/src/helpers/formatter.dart';
 import 'package:komiku_sdk/src/helpers/util.dart';
 import 'package:komiku_sdk/src/models/core_manga.dart';
 
-class SearchManga extends CoreManga {
+class Manga extends CoreManga {
   final String description;
   final String firstChapter;
   final String firstChapterEndpoint;
   final String lastChapter;
   final String lastChapterEndpoint;
 
-  SearchManga({
+  Manga({
     required String title,
     required String thumb,
     required MangaType type,
@@ -22,12 +22,12 @@ class SearchManga extends CoreManga {
     required this.lastChapterEndpoint,
   }) : super(title, thumb, type, detailEndpoint);
 
-  static List<SearchManga> fromJson(List<Map<String, String?>> listJson) {
-    List<SearchManga> list = [];
+  static List<Manga> fromJson(List<Map<String, String?>> listJson) {
+    List<Manga> list = [];
 
     for (Map<String, String?> elm in listJson) {
       list.add(
-        SearchManga(
+        Manga(
           title: elm['title'] ?? '',
           thumb: elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
           type:
