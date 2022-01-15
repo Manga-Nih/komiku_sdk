@@ -6,7 +6,6 @@ abstract class CoreManga {
   final MangaType type;
   final String release;
   final String? detailEndpoint;
-  final String? chapterEndpoint;
 
   CoreManga(
     this.title,
@@ -14,6 +13,5 @@ abstract class CoreManga {
     this.type,
     this.release,
     this.detailEndpoint,
-    this.chapterEndpoint,
   );
 }

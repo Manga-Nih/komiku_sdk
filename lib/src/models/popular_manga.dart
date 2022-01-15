@@ -5,16 +5,17 @@ import 'package:komiku_sdk/src/models/core_manga.dart';
 
 class PopularManga extends CoreManga {
   final String reader;
+  final String? chapterEndpoint;
 
-  PopularManga(
-    String title,
-    String thumb,
-    MangaType type,
-    String release,
+  PopularManga({
+    required String title,
+    required String thumb,
+    required MangaType type,
+    required String release,
     String? detailEndpoint,
-    String? chapterEndpoint,
-    this.reader,
-  ) : super(title, thumb, type, release, detailEndpoint, chapterEndpoint);
+    this.chapterEndpoint,
+    required this.reader,
+  }) : super(title, thumb, type, release, detailEndpoint);
 
   static List<PopularManga> fromJson(List<Map<String, String?>> listJson) {
     List<PopularManga> list = [];
@@ -22,17 +23,18 @@ class PopularManga extends CoreManga {
     for (Map<String, String?> elm in listJson) {
       list.add(
         PopularManga(
-          elm['title'] ?? '',
-          elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
-          elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
-          elm['release'] ?? '',
-          elm['detail_endpoint'] != null
+          title: elm['title'] ?? '',
+          thumb: elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
+          type:
+              elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
+          release: elm['release'] ?? '',
+          detailEndpoint: elm['detail_endpoint'] != null
               ? Formatter.detailTrim(elm['detail_endpoint']!)
               : null,
-          elm['chapter_endpoint'] != null
+          chapterEndpoint: elm['chapter_endpoint'] != null
               ? Formatter.chapterTrim(elm['chapter_endpoint']!)
               : null,
-          elm['reader'] ?? '',
+          reader: elm['reader'] ?? '',
         ),
       );
     }
