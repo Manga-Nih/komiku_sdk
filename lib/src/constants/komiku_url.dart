@@ -1,4 +1,4 @@
-class Url {
+class KomikuUrl {
   static String baseUrl = 'https://komiku.id';
 
   static String mangaHomeUrl = 'https://komiku.id/baca-manga/';

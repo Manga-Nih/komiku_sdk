@@ -1,3 +1,5 @@
+library komiku_sdk;
+
 class Genre {
   static final List<String> _genreList = [
     '4-Koma',
