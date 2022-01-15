@@ -9,21 +9,21 @@ void main() {
 
   setUp(() => komiku = Komiku());
 
-  group('Komiku all manga, manhua and manhwa', () {
-    expectResult(List<Manga> listManga) {
-      for (var manga in listManga) {
-        expect(manga.title, isNot(''));
-        expect(manga.thumb, isNot(''));
-        expect(manga.type, isNot(MangaType.none));
-        expect(manga.detailEndpoint, isNot(''));
-        expect(manga.description, isNot(''));
-        expect(manga.firstChapter, isNot(''));
-        expect(manga.firstChapterEndpoint, isNot(''));
-        expect(manga.lastChapter, isNot(''));
-        expect(manga.lastChapterEndpoint, isNot(''));
-      }
+  expectResult(List<Manga> listManga) {
+    for (var manga in listManga) {
+      expect(manga.title, isNot(''));
+      expect(manga.thumb, isNot(''));
+      expect(manga.type, isNot(MangaType.none));
+      expect(manga.detailEndpoint, isNot(''));
+      expect(manga.description, isNot(''));
+      expect(manga.firstChapter, isNot(''));
+      expect(manga.firstChapterEndpoint, isNot(''));
+      expect(manga.lastChapter, isNot(''));
+      expect(manga.lastChapterEndpoint, isNot(''));
     }
+  }
 
+  group('Komiku all manga, manhua and manhwa', () {
     test('Get all manga', () async {
       List<Manga> listManga = await komiku.allManga();
 
