@@ -15,7 +15,7 @@ void main() {
   });
 
   test('Get all genre', () {
-    List<String> genres = Genre.all();
+    List<Genre> genres = Genre.all();
     int count = genres.length;
 
     expect(count, 63);
