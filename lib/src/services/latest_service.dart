@@ -26,7 +26,7 @@ class LatestService extends CoreService {
     }
 
     Document? document = await getBodyFromUrl(url);
-    List<Map<String, String?>> result = [];
+    List<Map<String, String>> result = [];
 
     if (document != null) {
       List<Element> root = document.querySelectorAll('#Terbaru > .ls4w > .ls4');
@@ -40,10 +40,10 @@ class LatestService extends CoreService {
         String type = typeRelease[0].trim().split(' ')[0];
         String release = typeRelease[1].trim();
 
-        String? detailEndpoint =
-            elm.querySelector('.ls4v > a')?.getAttribute('href');
-        String? chapterEndpoint =
-            elm.querySelector('.ls4j > a')?.getAttribute('href');
+        String detailEndpoint =
+            elm.querySelector('.ls4v > a')!.getAttribute('href')!;
+        String chapterEndpoint =
+            elm.querySelector('.ls4j > a')!.getAttribute('href')!;
 
         result.add({
           'title': title,

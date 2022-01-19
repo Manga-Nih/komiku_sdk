@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:komiku_sdk/enum.dart';
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
 
@@ -10,15 +9,15 @@ void main() {
 
   expectResult(List<Manga> listManga) {
     for (var manga in listManga) {
-      expect(manga.title, isNot(''));
-      expect(manga.thumb, isNot(''));
-      expect(manga.type, isNot(MangaType.none));
-      expect(manga.detailEndpoint, isNot(''));
-      expect(manga.description, isNot(''));
-      expect(manga.firstChapter, isNot(''));
-      expect(manga.firstChapterEndpoint, isNot(''));
-      expect(manga.lastChapter, isNot(''));
-      expect(manga.lastChapterEndpoint, isNot(''));
+      expect(manga.title, isNotNull);
+      expect(manga.thumb, isNotNull);
+      expect(manga.type, isNotNull);
+      expect(manga.detailEndpoint, isNotNull);
+      expect(manga.description, isNotNull);
+      expect(manga.firstChapter, isNotNull);
+      expect(manga.firstChapterEndpoint, isNotNull);
+      expect(manga.lastChapter, isNotNull);
+      expect(manga.lastChapterEndpoint, isNotNull);
     }
   }
 

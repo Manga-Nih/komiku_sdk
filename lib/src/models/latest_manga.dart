@@ -17,24 +17,19 @@ class LatestManga extends CoreManga {
     required this.chapterEndpoint,
   }) : super(title, thumb, type, typeName, detailEndpoint);
 
-  static List<LatestManga> fromJson(List<Map<String, String?>> listJson) {
+  static List<LatestManga> fromJson(List<Map<String, String>> listJson) {
     List<LatestManga> list = [];
 
-    for (Map<String, String?> elm in listJson) {
+    for (Map<String, String> elm in listJson) {
       list.add(
         LatestManga(
-          title: elm['title'] ?? '',
-          thumb: elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
-          type:
-              elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
-          typeName: elm['type'] ?? '',
-          release: elm['release'] ?? '',
-          detailEndpoint: elm['detail_endpoint'] != null
-              ? Formatter.detailTrim(elm['detail_endpoint']!)
-              : '',
-          chapterEndpoint: elm['chapter_endpoint'] != null
-              ? Formatter.chapterTrim(elm['chapter_endpoint']!)
-              : '',
+          title: elm['title']!,
+          thumb: Formatter.cleanUrl(elm['thumb']!),
+          type: Util.getType(elm['type']!),
+          typeName: elm['type']!,
+          release: elm['release']!,
+          detailEndpoint: Formatter.detailTrim(elm['detail_endpoint']!),
+          chapterEndpoint: Formatter.chapterTrim(elm['chapter_endpoint']!),
         ),
       );
     }

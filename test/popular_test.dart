@@ -9,15 +9,15 @@ void main() {
   setUp(() => komiku = Komiku());
 
   group('Komiku popular manga', () {
-    expectResult(List<PopularManga> listPopular) {
+    expectResult(List<PopularManga> listPopular, {bool isMangaType = false}) {
       for (var popular in listPopular) {
-        expect(popular.title, isNot(''));
-        expect(popular.thumb, isNot(''));
-        expect(popular.type, isNot(MangaType.none));
-        expect(popular.reader, isNot(''));
-        expect(popular.release, isNot(''));
-        expect(popular.detailEndpoint, isNot(''));
-        expect(popular.chapterEndpoint, isNot(''));
+        expect(popular.title, isNotNull);
+        expect(popular.thumb, isNotNull);
+        expect(popular.type, isNotNull);
+        expect(popular.reader, isNotNull);
+        expect(popular.release, isNotNull);
+        expect(popular.detailEndpoint, isNotNull);
+        expect(popular.chapterEndpoint, isMangaType ? isNull : isNotNull);
       }
     }
 
@@ -33,7 +33,7 @@ void main() {
           await komiku.popular(mangaType: MangaType.manga);
 
       expect(popular.length, isNot(0));
-      expectResult(popular);
+      expectResult(popular, isMangaType: true);
     });
 
     test('Get popular manhua', () async {
@@ -41,7 +41,7 @@ void main() {
           await komiku.popular(mangaType: MangaType.manhua);
 
       expect(popular.length, isNot(0));
-      expectResult(popular);
+      expectResult(popular, isMangaType: true);
     });
 
     test('Get popular manhwa', () async {
@@ -49,7 +49,7 @@ void main() {
           await komiku.popular(mangaType: MangaType.manhwa);
 
       expect(popular.length, isNot(0));
-      expectResult(popular);
+      expectResult(popular, isMangaType: true);
     });
   });
 }

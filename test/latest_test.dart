@@ -11,12 +11,12 @@ void main() {
   group('Komiku latest manga', () {
     expectResult(List<LatestManga> latests) {
       for (var latest in latests) {
-        expect(latest.title, isNot(''));
-        expect(latest.thumb, isNot(''));
-        expect(latest.type, isNot(MangaType.none));
-        expect(latest.release, isNot(''));
-        expect(latest.detailEndpoint, isNot(''));
-        expect(latest.chapterEndpoint, isNot(''));
+        expect(latest.title, isNotNull);
+        expect(latest.thumb, isNotNull);
+        expect(latest.type, isNotNull);
+        expect(latest.release, isNotNull);
+        expect(latest.detailEndpoint, isNotNull);
+        expect(latest.chapterEndpoint, isNotNull);
       }
     }
 

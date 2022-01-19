@@ -1,1 +1,1 @@
-enum MangaType { manga, manhua, manhwa, none }
+enum MangaType { manga, manhua, manhwa }

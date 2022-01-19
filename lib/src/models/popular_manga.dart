@@ -25,19 +25,16 @@ class PopularManga extends CoreManga {
     for (Map<String, String?> elm in listJson) {
       list.add(
         PopularManga(
-          title: elm['title'] ?? '',
-          thumb: elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
-          type:
-              elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
-          typeName: elm['type'] ?? '',
-          release: elm['release'] ?? '',
-          detailEndpoint: elm['detail_endpoint'] != null
-              ? Formatter.detailTrim(elm['detail_endpoint']!)
-              : '',
+          title: elm['title']!,
+          thumb: Formatter.cleanUrl(elm['thumb']!),
+          type: Util.getType(elm['type']!),
+          typeName: elm['type']!,
+          release: elm['release']!,
+          detailEndpoint: Formatter.detailTrim(elm['detail_endpoint']!),
           chapterEndpoint: elm['chapter_endpoint'] != null
               ? Formatter.chapterTrim(elm['chapter_endpoint']!)
               : null,
-          reader: elm['reader'] ?? '',
+          reader: elm['reader']!,
         ),
       );
     }

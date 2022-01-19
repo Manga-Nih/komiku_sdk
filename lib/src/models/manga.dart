@@ -33,25 +33,20 @@ class Manga extends CoreManga {
     for (Map<String, String?> elm in listJson) {
       list.add(
         Manga(
-          title: elm['title'] ?? '',
-          thumb: elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
-          type:
-              elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
-          typeName: elm['type'] ?? '',
+          title: elm['title']!,
+          thumb: Formatter.cleanUrl(elm['thumb']!),
+          type: Util.getType(elm['type']!),
+          typeName: elm['type']!,
           reader: elm['reader'],
           release: elm['release'],
-          description: elm['description'] ?? '',
-          detailEndpoint: elm['detail_endpoint'] != null
-              ? Formatter.detailTrim(elm['detail_endpoint']!)
-              : '',
-          firstChapter: elm['first_chapter'] ?? '',
-          firstChapterEndpoint: elm['first_chapter_endpoint'] != null
-              ? Formatter.chapterTrim(elm['first_chapter_endpoint']!)
-              : '',
-          lastChapter: elm['last_chapter'] ?? '',
-          lastChapterEndpoint: elm['last_chapter_endpoint'] != null
-              ? Formatter.chapterTrim(elm['last_chapter_endpoint']!)
-              : '',
+          description: elm['description']!,
+          detailEndpoint: Formatter.detailTrim(elm['detail_endpoint']!),
+          firstChapter: elm['first_chapter']!,
+          firstChapterEndpoint:
+              Formatter.chapterTrim(elm['first_chapter_endpoint']!),
+          lastChapter: elm['last_chapter']!,
+          lastChapterEndpoint:
+              Formatter.chapterTrim(elm['last_chapter_endpoint']!),
         ),
       );
     }
