@@ -71,6 +71,20 @@ Komiku komiku = Komiku();
 List<Manga> popular = komiku.search(keyword: 'one piece');
 ```
 
+## Genre
+
+1. Get all manga.
+
+```dart
+List<Genre> allGenre = Genre.all();
+```
+
+2. Find genre.
+
+```dart
+Genre genre = Genre.find('action);
+```
+
 ## All Manga, Manhua and Manhwa
 
 1. Get all manga.
