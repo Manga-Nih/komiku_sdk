@@ -4,12 +4,14 @@ abstract class CoreManga {
   final String title;
   final String thumb;
   final MangaType type;
+  final String typeName;
   final String detailEndpoint;
 
   CoreManga(
     this.title,
     this.thumb,
     this.type,
+    this.typeName,
     this.detailEndpoint,
   );
 }

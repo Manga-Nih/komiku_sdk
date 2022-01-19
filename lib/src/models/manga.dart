@@ -4,6 +4,8 @@ import 'package:komiku_sdk/src/helpers/util.dart';
 import 'package:komiku_sdk/src/models/core_manga.dart';
 
 class Manga extends CoreManga {
+  final String reader;
+  final String release;
   final String description;
   final String firstChapter;
   final String firstChapterEndpoint;
@@ -14,13 +16,16 @@ class Manga extends CoreManga {
     required String title,
     required String thumb,
     required MangaType type,
+    required String typeName,
     required String detailEndpoint,
+    required this.reader,
+    required this.release,
     required this.description,
     required this.firstChapter,
     required this.firstChapterEndpoint,
     required this.lastChapter,
     required this.lastChapterEndpoint,
-  }) : super(title, thumb, type, detailEndpoint);
+  }) : super(title, thumb, type, typeName, detailEndpoint);
 
   static List<Manga> fromJson(List<Map<String, String?>> listJson) {
     List<Manga> list = [];
@@ -32,6 +37,9 @@ class Manga extends CoreManga {
           thumb: elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
           type:
               elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
+          typeName: elm['type'] ?? '',
+          reader: elm['reader'] ?? '',
+          release: elm['release'] ?? '',
           description: elm['description'] ?? '',
           detailEndpoint: elm['detail_endpoint'] != null
               ? Formatter.detailTrim(elm['detail_endpoint']!)
@@ -56,7 +64,9 @@ class Manga extends CoreManga {
     String print = 'Search Manga';
     print += '\n Title\t\t\t: $title';
     print += '\n Thumbnail\t\t: $thumb';
-    print += '\n Type\t\t\t: ${Util.toCapital(type.name)}';
+    print += '\n Type\t\t\t: $typeName';
+    print += '\n Reader\t\t\t: $reader';
+    print += '\n Release\t\t: $release';
     print += '\n Description\t\t: $description';
     print += '\n Detail Endpoint\t: $detailEndpoint';
     print += '\n First Chapter\t\t: $firstChapter';

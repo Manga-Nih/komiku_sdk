@@ -11,6 +11,12 @@ mixin MangaParser {
       String thumb =
           elm.querySelector('.bgei > a > img')!.getAttribute('data-src')!;
       String type = elm.querySelector('.bgei > a > div > b')!.text!;
+
+      String readerRelease = elm.querySelector('.kan > .judul2')!.text!;
+      List<String> listReaderRelease = readerRelease.split('•');
+      String reader = listReaderRelease[0].trim();
+      String release = listReaderRelease[1].trim();
+
       String description = elm.querySelector('.kan > p')!.text!.trim();
       String detailEndpoint =
           elm.querySelector('.bgei > a')!.getAttribute('href')!;
@@ -45,6 +51,8 @@ mixin MangaParser {
         'title': title,
         'thumb': thumb,
         'type': type,
+        'reader': reader,
+        'release': release,
         'description': description,
         'detail_endpoint': detailEndpoint,
         'first_chapter': firstChapter,

@@ -11,10 +11,11 @@ class LatestManga extends CoreManga {
     required String title,
     required String thumb,
     required MangaType type,
+    required String typeName,
     required String detailEndpoint,
     required this.release,
     required this.chapterEndpoint,
-  }) : super(title, thumb, type, detailEndpoint);
+  }) : super(title, thumb, type, typeName, detailEndpoint);
 
   static List<LatestManga> fromJson(List<Map<String, String?>> listJson) {
     List<LatestManga> list = [];
@@ -26,6 +27,7 @@ class LatestManga extends CoreManga {
           thumb: elm['thumb'] != null ? Formatter.cleanUrl(elm['thumb']!) : '',
           type:
               elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
+          typeName: elm['type'] ?? '',
           release: elm['release'] ?? '',
           detailEndpoint: elm['detail_endpoint'] != null
               ? Formatter.detailTrim(elm['detail_endpoint']!)
@@ -45,7 +47,7 @@ class LatestManga extends CoreManga {
     String print = 'Latest Manga';
     print += '\n Title\t\t\t: $title';
     print += '\n Thumbnail\t\t: $thumb';
-    print += '\n Type\t\t\t: ${Util.toCapital(type.name)}';
+    print += '\n Type\t\t\t: $typeName';
     print += '\n Release\t\t: $release';
     print += '\n Detail Endpoint\t: $detailEndpoint';
     print += '\n Chapter Endpoint\t: $chapterEndpoint';
