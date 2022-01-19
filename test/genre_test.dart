@@ -18,6 +18,6 @@ void main() {
     List<Genre> genres = Genre.all();
     int count = genres.length;
 
-    expect(count, 63);
+    expect(count, 62);
   });
 }

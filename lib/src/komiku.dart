@@ -1,7 +1,9 @@
 import 'package:komiku_sdk/src/enums/manga_type.dart';
 import 'package:komiku_sdk/src/models/latest_manga.dart';
+import 'package:komiku_sdk/src/models/manga_detail.dart';
 import 'package:komiku_sdk/src/models/popular_manga.dart';
 import 'package:komiku_sdk/src/models/manga.dart';
+import 'package:komiku_sdk/src/services/detail_service.dart';
 import 'package:komiku_sdk/src/services/latest_service.dart';
 import 'package:komiku_sdk/src/services/manga_service.dart';
 import 'package:komiku_sdk/src/services/popular_service.dart';
@@ -12,6 +14,7 @@ class Komiku {
   final PopularService _popularService = PopularService();
   final SearchService _searchService = SearchService();
   final MangaService _mangaService = MangaService();
+  final DetailService _detailService = DetailService();
 
   /// Get latest manga/manhua/manhwa.
   /// If mangaType variable not fill it.
@@ -53,5 +56,10 @@ class Komiku {
   Future<List<Manga>> allMangaByGenre(
       {int? page, required String genreEndpoint}) {
     return _mangaService.allMangaByGenre(page, genreEndpoint);
+  }
+
+  /// Get detail manga by detailEndpoint
+  Future<MangaDetail> detail({required String detailEndpoint}) {
+    return _detailService.detail(detailEndpoint);
   }
 }
