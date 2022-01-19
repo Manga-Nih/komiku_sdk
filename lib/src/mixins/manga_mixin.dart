@@ -14,8 +14,13 @@ mixin MangaParser {
 
       String readerRelease = elm.querySelector('.kan > .judul2')!.text!;
       List<String> listReaderRelease = readerRelease.split('•');
-      String reader = listReaderRelease[0].trim();
-      String release = listReaderRelease[1].trim();
+
+      // search manga don't have data reader and release
+      String? reader, release;
+      if (listReaderRelease.length > 1) {
+        reader = listReaderRelease[0].trim();
+        release = listReaderRelease[1].trim();
+      }
 
       String description = elm.querySelector('.kan > p')!.text!.trim();
       String detailEndpoint =

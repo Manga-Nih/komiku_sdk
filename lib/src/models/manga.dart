@@ -4,8 +4,8 @@ import 'package:komiku_sdk/src/helpers/util.dart';
 import 'package:komiku_sdk/src/models/core_manga.dart';
 
 class Manga extends CoreManga {
-  final String reader;
-  final String release;
+  final String? reader;
+  final String? release;
   final String description;
   final String firstChapter;
   final String firstChapterEndpoint;
@@ -38,8 +38,8 @@ class Manga extends CoreManga {
           type:
               elm['type'] != null ? Util.getType(elm['type']!) : MangaType.none,
           typeName: elm['type'] ?? '',
-          reader: elm['reader'] ?? '',
-          release: elm['release'] ?? '',
+          reader: elm['reader'],
+          release: elm['release'],
           description: elm['description'] ?? '',
           detailEndpoint: elm['detail_endpoint'] != null
               ? Formatter.detailTrim(elm['detail_endpoint']!)
