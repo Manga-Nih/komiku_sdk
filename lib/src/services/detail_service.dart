@@ -1,10 +1,11 @@
 import 'package:komiku_sdk/src/constants/komiku_url.dart';
+import 'package:komiku_sdk/src/models/chapter_detail.dart';
 import 'package:komiku_sdk/src/models/manga_detail.dart';
 import 'package:komiku_sdk/src/services/core_service.dart';
 import 'package:universal_html/html.dart';
 
 class DetailService extends CoreService {
-  Future<MangaDetail> detail(String slug) async {
+  Future<MangaDetail> manga(String slug) async {
     String url = KomikuUrl.detailUrl + '/' + slug + '/';
 
     Document? document = await getBodyFromUrl(url);
@@ -97,5 +98,57 @@ class DetailService extends CoreService {
     }
 
     return MangaDetail.fromJson(result);
+  }
+
+  Future<ChapterDetail> chapter(String slug) async {
+    String url = KomikuUrl.chapterUrl + '/' + slug + '/';
+
+    Document? document = await getBodyFromUrl(url);
+    Map<String, dynamic> result = {};
+
+    if (document != null) {
+      Element root = document.querySelector('.content')!;
+
+      String title = root.querySelectorAll('#Judul > h1').first.text!.trim();
+      String chapter = root.querySelector('.nxpr > span')!.text!.trim();
+
+      // Prev and next chapter endpoint
+      late String prevChapterEndpoint;
+      late String nextChapterEndpoint;
+      List<Element> prevNextElement = root.querySelectorAll('.nxpr > a');
+      for (Element item in prevNextElement) {
+        String dataIcon = item.querySelector('svg')!.getAttribute('data-icon')!;
+
+        if (dataIcon == 'caret-right') {
+          nextChapterEndpoint = item.getAttribute('href')!;
+        }
+        if (dataIcon == 'caret-left') {
+          prevChapterEndpoint = item.getAttribute('href')!;
+        }
+      }
+
+      // Images
+      List<Map<String, String>> images = [];
+      List<Element> imagesElement = root.querySelectorAll('#Baca_Komik > img');
+      for (Element item in imagesElement) {
+        String alt = item.getAttribute('alt')!;
+        String image = item.getAttribute('src')!;
+
+        images.add({
+          'alt': alt,
+          'image': image,
+        });
+      }
+
+      result = {
+        'title': title,
+        'chapter': chapter,
+        'prev_chapter_endpoint': prevChapterEndpoint,
+        'next_chapter_endpoint': nextChapterEndpoint,
+        'images': images,
+      };
+    }
+
+    return ChapterDetail.fromJson(result);
   }
 }

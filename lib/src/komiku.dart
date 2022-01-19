@@ -1,4 +1,5 @@
 import 'package:komiku_sdk/src/enums/manga_type.dart';
+import 'package:komiku_sdk/src/models/chapter_detail.dart';
 import 'package:komiku_sdk/src/models/latest_manga.dart';
 import 'package:komiku_sdk/src/models/manga_detail.dart';
 import 'package:komiku_sdk/src/models/popular_manga.dart';
@@ -58,8 +59,13 @@ class Komiku {
     return _mangaService.allMangaByGenre(page, genreEndpoint);
   }
 
-  /// Get detail manga by detailEndpoint
+  /// Get detail manga by detailEndpoint.
   Future<MangaDetail> detail({required String detailEndpoint}) {
-    return _detailService.detail(detailEndpoint);
+    return _detailService.manga(detailEndpoint);
+  }
+
+  /// Get detail chapter by chapterEndpoint.
+  Future<ChapterDetail> chapter({required String chapterEndpoint}) {
+    return _detailService.chapter(chapterEndpoint);
   }
 }

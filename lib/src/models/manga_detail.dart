@@ -67,6 +67,10 @@ class MangaDetail {
     print += '\n Summary\t\t: $summaries';
     print += '\n Synopsis\t\t: $synopsis';
     print += '\n Count Chapters\t\t: ${chapters.length}';
+    print += '\n Last Chapter';
+    print += '\n \tChapter\t: ${chapters.first.chapter}';
+    print += '\n \tChapter Endpoint\t: ${chapters.first.chapterEndpoint}';
+    print += '\n \tDate\t: ${chapters.first.date.toUtc()}';
 
     return print;
   }
@@ -85,12 +89,13 @@ class Chapter {
 
   static List<Chapter> fromJson(List<Map<String, String>> json) {
     List<Chapter> chapters = [];
+    DateFormat format = DateFormat('d/M/y');
 
     for (Map<String, String> item in json) {
       chapters.add(Chapter(
         chapter: item['chapter']!,
         chapterEndpoint: Formatter.chapterTrim(item['chapter_endpoint']!),
-        date: DateFormat.yMd().parse(item['date']!),
+        date: format.parse(item['date']!, true),
       ));
     }
 
