@@ -38,7 +38,6 @@ class Genre {
     'Music',
     'Mystery',
     'Namaikizakari',
-    'omedy',
     'One Shot',
     'Overpower',
     'Parodi',
