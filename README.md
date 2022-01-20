@@ -8,28 +8,28 @@
 
 ```dart
 Komiku komiku = Komiku();
-List<LatestManga> latests = komiku.latest();
+List<LatestManga> latests = await komiku.latest();
 ```
 
 2. Get latest manga.
 
 ```dart
 Komiku komiku = Komiku();
-List<LatestManga> latests = komiku.latest(mangaType: MangaType.manga);
+List<LatestManga> latests = await komiku.latest(mangaType: MangaType.manga);
 ```
 
 3. Get latest manhua.
 
 ```dart
 Komiku komiku = Komiku();
-List<LatestManga> latests = komiku.latest(mangaType: MangaType.manhua);
+List<LatestManga> latests = await komiku.latest(mangaType: MangaType.manhua);
 ```
 
 4. Get latest manhwa.
 
 ```dart
 Komiku komiku = Komiku();
-List<LatestManga> latests = komiku.latest(mangaType: MangaType.manhwa);
+List<LatestManga> latests = await komiku.latest(mangaType: MangaType.manhwa);
 ```
 
 ## Popular Manga
@@ -38,28 +38,28 @@ List<LatestManga> latests = komiku.latest(mangaType: MangaType.manhwa);
 
 ```dart
 Komiku komiku = Komiku();
-List<PopularManga> popular = komiku.popular();
+List<PopularManga> popular = await komiku.popular();
 ```
 
 2. Get popular manga.
 
 ```dart
 Komiku komiku = Komiku();
-List<PopularManga> popular = komiku.popular(mangaType: MangaType.manga);
+List<PopularManga> popular = await komiku.popular(mangaType: MangaType.manga);
 ```
 
 3. Get popular manhua.
 
 ```dart
 Komiku komiku = Komiku();
-List<PopularManga> popular = komiku.popular(mangaType: MangaType.manhua);
+List<PopularManga> popular = await komiku.popular(mangaType: MangaType.manhua);
 ```
 
 4. Get popular manhwa.
 
 ```dart
 Komiku komiku = Komiku();
-List<PopularManga> popular = komiku.popular(mangaType: MangaType.manhwa);
+List<PopularManga> popular = await komiku.popular(mangaType: MangaType.manhwa);
 ```
 
 ## Search Manga
@@ -68,7 +68,7 @@ List<PopularManga> popular = komiku.popular(mangaType: MangaType.manhwa);
 
 ```dart
 Komiku komiku = Komiku();
-List<Manga> popular = komiku.search(keyword: 'one piece');
+List<Manga> popular = await komiku.search(keyword: 'one piece');
 ```
 
 ## Genre
@@ -82,7 +82,23 @@ List<Genre> allGenre = Genre.all();
 2. Find genre.
 
 ```dart
-Genre genre = Genre.find('action);
+Genre genre = Genre.find('action');
+```
+
+## Detail Manga and Chapter
+
+1. Get detail manga by slug/detailEndpoint.
+
+```dart
+Komiku komiku = Komiku();
+MangaDetail detail = await komiku.detail(detailEndpoint: 'martial-peak');
+```
+
+2. Get chapter manga by slug/chapterEndpoint.
+
+```dart
+Komiku komiku = Komiku();
+MangaDetail detail = await komiku.chapter(chapterEndpoint: 'martial-peak-chapter-1870');
 ```
 
 ## All Manga, Manhua and Manhwa
@@ -91,36 +107,36 @@ Genre genre = Genre.find('action);
 
 ```dart
 Komiku komiku = Komiku();
-List<Manga> manga = komiku.allManga();
+List<Manga> manga = await komiku.allManga();
 
-List<Manga> manga = komiku.allManga(page: 5);
+List<Manga> manga = await komiku.allManga(page: 5);
 ```
 
 2. Get all manhua.
 
 ```dart
 Komiku komiku = Komiku();
-List<Manga> manhua = komiku.allManhua();
+List<Manga> manhua = await komiku.allManhua();
 
-List<Manga> manhua = komiku.allManhua(page: 5);
+List<Manga> manhua = await komiku.allManhua(page: 5);
 ```
 
 3. Get all manhwa.
 
 ```dart
 Komiku komiku = Komiku();
-List<Manga> manhwa = komiku.allManhwa();
+List<Manga> manhwa = await komiku.allManhwa();
 
-List<Manga> manhwa = komiku.allManhwa(page: 5);
+List<Manga> manhwa = await komiku.allManhwa(page: 5);
 ```
 
 4. Get all manga, manhua and manhwa by genre.
 
 ```dart
 Komiku komiku = Komiku();
-List<Manga> manga = komiku.allMangaByGenre(genreEndpoint: 'comedy');
+List<Manga> manga = await komiku.allMangaByGenre(genreEndpoint: 'comedy');
 
-List<Manga> manga = komiku.allMangaByGenre(genreEndpoint: 'super-power');
+List<Manga> manga = await komiku.allMangaByGenre(genreEndpoint: 'super-power');
 
-List<Manga> manga = komiku.allMangaByGenre(page: 5, genreEndpoint: 'action');
+List<Manga> manga = await komiku.allMangaByGenre(page: 5, genreEndpoint: 'action');
 ```
