@@ -1,13 +1,15 @@
 import 'package:komiku_sdk/src/helpers/formatter.dart';
 
 class ChapterDetail {
+  final String endpoint;
   final String title;
   final String chapter;
-  final String prevChapterEndpoint;
-  final String nextChapterEndpoint;
+  final String? prevChapterEndpoint;
+  final String? nextChapterEndpoint;
   final List<ChapterImage> images;
 
   ChapterDetail({
+    required this.endpoint,
     required this.title,
     required this.chapter,
     required this.prevChapterEndpoint,
@@ -17,10 +19,15 @@ class ChapterDetail {
 
   factory ChapterDetail.fromJson(Map<String, dynamic> json) {
     return ChapterDetail(
+      endpoint: json['chapter_endpoint'],
       title: json['title'],
       chapter: json['chapter'],
-      prevChapterEndpoint: Formatter.chapterTrim(json['prev_chapter_endpoint']),
-      nextChapterEndpoint: Formatter.chapterTrim(json['next_chapter_endpoint']),
+      prevChapterEndpoint: json['prev_chapter_endpoint'] != null
+          ? Formatter.chapterTrim(json['prev_chapter_endpoint'])
+          : null,
+      nextChapterEndpoint: json['next_chapter_endpoint'] != null
+          ? Formatter.chapterTrim(json['next_chapter_endpoint'])
+          : null,
       images: ChapterImage.fromJson(json['images']),
     );
   }
@@ -28,6 +35,7 @@ class ChapterDetail {
   @override
   String toString() {
     String print = 'Detail Manga';
+    print += '\n Chapter Endpoint\t\t: $endpoint';
     print += '\n Title\t\t\t: $title';
     print += '\n Chapter\t\t: $chapter';
     print += '\n Prev Chapter Endpoint\t: $prevChapterEndpoint';
