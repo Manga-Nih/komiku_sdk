@@ -54,6 +54,22 @@ class Manga extends CoreManga {
     return list;
   }
 
+  Map<String, String?> toJson() {
+    return {
+      'title': title,
+      'thumb': Formatter.cleanUrl(thumb),
+      'type': typeName,
+      'reader': reader,
+      'release': release,
+      'description': description,
+      'detail_endpoint': Formatter.detailTrim(detailEndpoint),
+      'first_chapter': firstChapter,
+      'first_chapter_endpoint': Formatter.chapterTrim(firstChapterEndpoint),
+      'last_chapter': lastChapter,
+      'last_chapter_endpoint': Formatter.chapterTrim(lastChapterEndpoint),
+    };
+  }
+
   @override
   String toString() {
     String print = 'Search Manga';

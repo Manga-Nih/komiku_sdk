@@ -1,7 +1,7 @@
-import 'package:intl/intl.dart';
 import 'package:komiku_sdk/enum.dart';
 import 'package:komiku_sdk/src/helpers/formatter.dart';
 import 'package:komiku_sdk/src/helpers/util.dart';
+import 'package:komiku_sdk/src/models/chapter.dart';
 
 class MangaDetail {
   final String endpoint;
@@ -77,32 +77,5 @@ class MangaDetail {
     print += '\n \tDate\t: ${chapters.first.date.toUtc()}';
 
     return print;
-  }
-}
-
-class Chapter {
-  final String title;
-  final String endpoint;
-  final DateTime date;
-
-  Chapter({
-    required this.title,
-    required this.endpoint,
-    required this.date,
-  });
-
-  static List<Chapter> fromJson(List<Map<String, String>> json) {
-    List<Chapter> chapters = [];
-    DateFormat format = DateFormat('d/M/y');
-
-    for (Map<String, String> item in json) {
-      chapters.add(Chapter(
-        title: item['chapter']!,
-        endpoint: Formatter.chapterTrim(item['chapter_endpoint']!),
-        date: format.parse(item['date']!, true),
-      ));
-    }
-
-    return chapters;
   }
 }
