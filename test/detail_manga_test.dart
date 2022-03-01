@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
 
@@ -24,6 +25,8 @@ void main() {
       expect(detail.summaries, isNotEmpty);
       expect(detail.synopsis, isNotNull);
       expect(detail.chapters, isNotEmpty);
+
+      expect((await http.get(Uri.parse(detail.thumb))).statusCode, 200);
     });
   });
 }

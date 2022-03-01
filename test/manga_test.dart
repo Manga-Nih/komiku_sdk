@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
 
@@ -7,7 +8,7 @@ void main() {
 
   setUp(() => komiku = Komiku());
 
-  expectResult(List<Manga> listManga) {
+  expectResult(List<Manga> listManga) async {
     for (var manga in listManga) {
       expect(manga.title, isNotNull);
       expect(manga.thumb, isNotNull);
@@ -18,6 +19,8 @@ void main() {
       expect(manga.firstChapterEndpoint, isNotNull);
       expect(manga.lastChapter, isNotNull);
       expect(manga.lastChapterEndpoint, isNotNull);
+
+      expect((await http.get(Uri.parse(manga.thumb))).statusCode, 200);
     }
   }
 

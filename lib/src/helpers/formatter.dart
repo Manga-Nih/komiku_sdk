@@ -13,6 +13,8 @@ class Formatter {
 
   /// Cleaning url from query
   static String cleanUrl(String url) {
-    return url.replaceAll(RegExp(r'(\?.*)|(#.*)'), '');
+    return url
+        .replaceAll(RegExp(r'(\?.*)|(#.*)'), '')
+        .replaceAll('thumbnail.komiku.id', 'komiku.co.id');
   }
 }

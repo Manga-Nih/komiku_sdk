@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:komiku_sdk/enum.dart';
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
@@ -9,7 +10,8 @@ void main() {
   setUp(() => komiku = Komiku());
 
   group('Komiku popular manga', () {
-    expectResult(List<PopularManga> listPopular, {bool isMangaType = false}) {
+    expectResult(List<PopularManga> listPopular,
+        {bool isMangaType = false}) async {
       for (var popular in listPopular) {
         expect(popular.title, isNotNull);
         expect(popular.thumb, isNotNull);
@@ -18,6 +20,8 @@ void main() {
         expect(popular.release, isNotNull);
         expect(popular.detailEndpoint, isNotNull);
         expect(popular.chapterEndpoint, isMangaType ? isNull : isNotNull);
+
+        expect((await http.get(Uri.parse(popular.thumb))).statusCode, 200);
       }
     }
 

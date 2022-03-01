@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:komiku_sdk/enum.dart';
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
@@ -9,7 +10,7 @@ void main() {
   setUp(() => komiku = Komiku());
 
   group('Komiku latest manga', () {
-    expectResult(List<LatestManga> latests) {
+    expectResult(List<LatestManga> latests) async {
       for (var latest in latests) {
         expect(latest.title, isNotNull);
         expect(latest.thumb, isNotNull);
@@ -17,6 +18,8 @@ void main() {
         expect(latest.release, isNotNull);
         expect(latest.detailEndpoint, isNotNull);
         expect(latest.chapterEndpoint, isNotNull);
+
+        expect((await http.get(Uri.parse(latest.thumb))).statusCode, 200);
       }
     }
 
