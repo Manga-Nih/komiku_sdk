@@ -1,9 +1,10 @@
-import 'package:intl/intl.dart';
 import 'package:komiku_sdk/enum.dart';
 import 'package:komiku_sdk/src/helpers/formatter.dart';
 import 'package:komiku_sdk/src/helpers/util.dart';
+import 'package:komiku_sdk/src/models/chapter.dart';
 
 class MangaDetail {
+  final String endpoint;
   final String title;
   final String titleId;
   final String thumb;
@@ -19,6 +20,7 @@ class MangaDetail {
   final List<Chapter> chapters;
 
   MangaDetail({
+    required this.endpoint,
     required this.title,
     required this.titleId,
     required this.thumb,
@@ -36,6 +38,7 @@ class MangaDetail {
 
   factory MangaDetail.fromJson(Map<String, dynamic> json) {
     return MangaDetail(
+      endpoint: json['detail_endpoint'],
       title: json['title'],
       titleId: json['title_id'],
       thumb: Formatter.cleanUrl(json['thumb']),
@@ -55,6 +58,7 @@ class MangaDetail {
   @override
   String toString() {
     String print = 'Detail Manga';
+    print += '\n Detail Endpoint\t\t: $endpoint';
     print += '\n Title\t\t\t: $title';
     print += '\n Title ID\t\t: $titleId';
     print += '\n Thumbnail\t\t: $thumb';
@@ -68,37 +72,10 @@ class MangaDetail {
     print += '\n Synopsis\t\t: $synopsis';
     print += '\n Count Chapters\t\t: ${chapters.length}';
     print += '\n Last Chapter';
-    print += '\n \tChapter\t: ${chapters.first.chapter}';
-    print += '\n \tChapter Endpoint\t: ${chapters.first.chapterEndpoint}';
+    print += '\n \tChapter\t: ${chapters.first.title}';
+    print += '\n \tChapter Endpoint\t: ${chapters.first.endpoint}';
     print += '\n \tDate\t: ${chapters.first.date.toUtc()}';
 
     return print;
-  }
-}
-
-class Chapter {
-  final String chapter;
-  final String chapterEndpoint;
-  final DateTime date;
-
-  Chapter({
-    required this.chapter,
-    required this.chapterEndpoint,
-    required this.date,
-  });
-
-  static List<Chapter> fromJson(List<Map<String, String>> json) {
-    List<Chapter> chapters = [];
-    DateFormat format = DateFormat('d/M/y');
-
-    for (Map<String, String> item in json) {
-      chapters.add(Chapter(
-        chapter: item['chapter']!,
-        chapterEndpoint: Formatter.chapterTrim(item['chapter_endpoint']!),
-        date: format.parse(item['date']!, true),
-      ));
-    }
-
-    return chapters;
   }
 }

@@ -82,6 +82,7 @@ class DetailService extends CoreService {
       }
 
       result = {
+        'detail_endpoint': slug,
         'title': title,
         'title_id': titleId,
         'thumb': thumb,
@@ -113,8 +114,8 @@ class DetailService extends CoreService {
       String chapter = root.querySelector('.nxpr > span')!.text!.trim();
 
       // Prev and next chapter endpoint
-      late String prevChapterEndpoint;
-      late String nextChapterEndpoint;
+      String? prevChapterEndpoint;
+      String? nextChapterEndpoint;
       List<Element> prevNextElement = root.querySelectorAll('.nxpr > a');
       for (Element item in prevNextElement) {
         String dataIcon = item.querySelector('svg')!.getAttribute('data-icon')!;
@@ -141,6 +142,7 @@ class DetailService extends CoreService {
       }
 
       result = {
+        'chapter_endpoint': slug,
         'title': title,
         'chapter': chapter,
         'prev_chapter_endpoint': prevChapterEndpoint,
