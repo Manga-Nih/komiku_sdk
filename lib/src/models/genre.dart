@@ -1,6 +1,6 @@
 library komiku_sdk;
 
-import 'package:komiku_sdk/src/helpers/Util.dart';
+import 'package:komiku_sdk/src/helpers/util.dart';
 
 class Genre {
   final String name;
