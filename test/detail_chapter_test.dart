@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   late Komiku komiku;
@@ -17,6 +18,10 @@ void main() {
       expect(detail.prevChapterEndpoint, isNotNull);
       expect(detail.nextChapterEndpoint, isNotNull);
       expect(detail.images, isNotEmpty);
+
+      for (ChapterImage chapter in detail.images) {
+        expect((await http.get(Uri.parse(chapter.image))).statusCode, 200);
+      }
     });
   });
 }
