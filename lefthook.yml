@@ -10,7 +10,5 @@ pre-commit:
 pre-push:
   parallel: true
   commands:
-    test:
-      run: flutter test
     static_code_analysis:
       run: flutter analyze
