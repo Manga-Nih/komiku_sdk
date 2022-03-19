@@ -19,7 +19,8 @@ void main() {
         expect(latest.detailEndpoint, isNotNull);
         expect(latest.chapterEndpoint, isNotNull);
 
-        expect((await http.get(Uri.parse(latest.thumb))).statusCode, 200);
+        int statusCode = (await http.get(Uri.parse(latest.thumb))).statusCode;
+        expect(statusCode, 200);
       }
     }
 
@@ -27,7 +28,7 @@ void main() {
       List<LatestManga> latests = await komiku.latest();
 
       expect(latests.length, isNot(0));
-      expectResult(latests);
+      await expectResult(latests);
     });
 
     test('Get latest manga', () async {
@@ -35,7 +36,7 @@ void main() {
           await komiku.latest(mangaType: MangaType.manga);
 
       expect(latests.length, isNot(0));
-      expectResult(latests);
+      await expectResult(latests);
     });
 
     test('Get latest manhua', () async {
@@ -43,7 +44,7 @@ void main() {
           await komiku.latest(mangaType: MangaType.manhua);
 
       expect(latests.length, isNot(0));
-      expectResult(latests);
+      await expectResult(latests);
     });
 
     test('Get latest manhwa', () async {
@@ -51,7 +52,7 @@ void main() {
           await komiku.latest(mangaType: MangaType.manhwa);
 
       expect(latests.length, isNot(0));
-      expectResult(latests);
+      await expectResult(latests);
     });
   });
 }

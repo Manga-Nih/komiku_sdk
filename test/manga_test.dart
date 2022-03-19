@@ -20,7 +20,8 @@ void main() {
       expect(manga.lastChapter, isNotNull);
       expect(manga.lastChapterEndpoint, isNotNull);
 
-      expect((await http.get(Uri.parse(manga.thumb))).statusCode, 200);
+      int statusCode = (await http.get(Uri.parse(manga.thumb))).statusCode;
+      expect(statusCode, 200);
     }
   }
 
@@ -29,41 +30,41 @@ void main() {
       List<Manga> listManga = await komiku.allManga();
 
       expect(listManga.length, isNot(0));
-      expectResult(listManga);
+      await expectResult(listManga);
     });
 
     test('Get all manga in page 7', () async {
       List<Manga> listManga = await komiku.allManga(page: 7);
 
       expect(listManga.length, isNot(0));
-      expectResult(listManga);
+      await expectResult(listManga);
     });
 
     test('Get all manhua', () async {
       List<Manga> listManhua = await komiku.allManhua();
 
       expect(listManhua.length, isNot(0));
-      expectResult(listManhua);
+      await expectResult(listManhua);
     });
 
     test('Get all manhua in page 7', () async {
       List<Manga> listManhua = await komiku.allManhua(page: 7);
 
       expect(listManhua.length, isNot(0));
-      expectResult(listManhua);
+      await expectResult(listManhua);
     });
     test('Get all manhwa', () async {
       List<Manga> listManhwa = await komiku.allManhwa();
 
       expect(listManhwa.length, isNot(0));
-      expectResult(listManhwa);
+      await expectResult(listManhwa);
     });
 
     test('Get all manhwa in page 7', () async {
       List<Manga> listManhwa = await komiku.allManhwa(page: 7);
 
       expect(listManhwa.length, isNot(0));
-      expectResult(listManhwa);
+      await expectResult(listManhwa);
     });
   });
 
@@ -73,7 +74,7 @@ void main() {
           await komiku.allMangaByGenre(genreEndpoint: 'romance');
 
       expect(listManga.length, isNot(0));
-      expectResult(listManga);
+      await expectResult(listManga);
     });
 
     test('Get all manga by genre "romance" in page 5', () async {
@@ -81,7 +82,7 @@ void main() {
           await komiku.allMangaByGenre(genreEndpoint: 'romance');
 
       expect(listManga.length, isNot(0));
-      expectResult(listManga);
+      await expectResult(listManga);
     });
 
     test('Get all manga by genre "comedy"', () async {
@@ -89,7 +90,7 @@ void main() {
           await komiku.allMangaByGenre(genreEndpoint: 'comedy');
 
       expect(listManga.length, isNot(0));
-      expectResult(listManga);
+      await expectResult(listManga);
     });
 
     test('Get all manga by genre "comedy" in page 5', () async {
@@ -97,7 +98,7 @@ void main() {
           await komiku.allMangaByGenre(genreEndpoint: 'comedy');
 
       expect(listManga.length, isNot(0));
-      expectResult(listManga);
+      await expectResult(listManga);
     });
 
     test('Get all manga by genre "romancexxxxx"', () async {

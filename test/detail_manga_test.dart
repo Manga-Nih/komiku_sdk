@@ -26,7 +26,8 @@ void main() {
       expect(detail.synopsis, isNotNull);
       expect(detail.chapters, isNotEmpty);
 
-      expect((await http.get(Uri.parse(detail.thumb))).statusCode, 200);
+      int statusCode = (await http.get(Uri.parse(detail.thumb))).statusCode;
+      expect(statusCode, 200);
     });
   });
 }

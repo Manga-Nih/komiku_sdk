@@ -21,7 +21,8 @@ void main() {
         expect(popular.detailEndpoint, isNotNull);
         expect(popular.chapterEndpoint, isMangaType ? isNull : isNotNull);
 
-        expect((await http.get(Uri.parse(popular.thumb))).statusCode, 200);
+        int statusCode = (await http.get(Uri.parse(popular.thumb))).statusCode;
+        expect(statusCode, 200);
       }
     }
 
@@ -29,7 +30,7 @@ void main() {
       List<PopularManga> popular = await komiku.popular();
 
       expect(popular.length, isNot(0));
-      expectResult(popular);
+      await expectResult(popular);
     });
 
     test('Get popular manga', () async {
@@ -37,7 +38,7 @@ void main() {
           await komiku.popular(mangaType: MangaType.manga);
 
       expect(popular.length, isNot(0));
-      expectResult(popular, isMangaType: true);
+      await expectResult(popular, isMangaType: true);
     });
 
     test('Get popular manhua', () async {
@@ -45,7 +46,7 @@ void main() {
           await komiku.popular(mangaType: MangaType.manhua);
 
       expect(popular.length, isNot(0));
-      expectResult(popular, isMangaType: true);
+      await expectResult(popular, isMangaType: true);
     });
 
     test('Get popular manhwa', () async {

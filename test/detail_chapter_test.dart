@@ -20,7 +20,8 @@ void main() {
       expect(detail.images, isNotEmpty);
 
       for (ChapterImage chapter in detail.images) {
-        expect((await http.get(Uri.parse(chapter.image))).statusCode, 200);
+        int statusCode = (await http.get(Uri.parse(chapter.image))).statusCode;
+        expect(statusCode, 200);
       }
     });
   });
