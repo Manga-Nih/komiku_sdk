@@ -1,5 +1,17 @@
 # Komiku SDK
 
+# Development
+
+## Lefthook
+
+- To improve style and format code.
+- Install [lefhook](https://github.com/evilmartians/lefthook).
+- Add lefthook executable to path environment.
+- Open Manga nih project and execute lefthook command.
+  ```bash
+  lefthook install
+  ```
+
 # API
 
 ## Latest Manga
