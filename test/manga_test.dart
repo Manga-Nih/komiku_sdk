@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:http/http.dart' as http;
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
@@ -66,7 +66,7 @@ void main() {
       expect(listManhwa.length, isNot(0));
       await expectResult(listManhwa);
     });
-  });
+  }, timeout: const Timeout(Duration(minutes: 1)));
 
   group('Komiku all manga by genre', () {
     test('Get all manga by genre "romance"', () async {
@@ -107,5 +107,5 @@ void main() {
 
       expect(listManga.length, 0);
     });
-  });
+  }, timeout: const Timeout(Duration(minutes: 1)));
 }
