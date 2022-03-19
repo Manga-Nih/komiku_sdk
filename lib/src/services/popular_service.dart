@@ -34,8 +34,9 @@ class PopularService extends CoreService {
 
       for (Element elm in root) {
         String title = elm.querySelector('h4')!.text!.trim();
-        String thumb =
-            elm.querySelector('.ls23v > a > img')!.getAttribute('src')!;
+        String thumb = mangaType == MangaType.manhua
+            ? elm.querySelector('.ls23v > a > img')!.getAttribute('data-src')!
+            : elm.querySelector('.ls23v > a > img')!.getAttribute('src')!;
         String reader = elm.querySelector('.ls23t')!.firstChild!.text!;
         String release = elm.querySelector('.ls23t')!.lastChild!.text!;
 
