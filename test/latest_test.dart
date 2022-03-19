@@ -7,7 +7,7 @@ import 'package:komiku_sdk/models.dart';
 void main() {
   late Komiku komiku;
 
-  setUp(() => komiku = Komiku());
+  setUp(() => komiku = Komiku.instance);
 
   group('Komiku latest manga', () {
     expectResult(List<LatestManga> latests) async {

@@ -6,7 +6,7 @@ import 'package:komiku_sdk/models.dart';
 void main() {
   late Komiku komiku;
 
-  setUp(() => komiku = Komiku());
+  setUp(() => komiku = Komiku.instance);
 
   expectResult(List<Manga> listManga) async {
     for (var manga in listManga) {

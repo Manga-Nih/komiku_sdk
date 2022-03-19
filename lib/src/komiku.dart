@@ -17,6 +17,11 @@ class Komiku {
   final MangaService _mangaService = MangaService();
   final DetailService _detailService = DetailService();
 
+  // Dart singleton
+  Komiku._internal();
+  static final Komiku _instance = Komiku._internal();
+  static Komiku get instance => _instance;
+
   /// Get latest manga/manhua/manhwa.
   /// If mangaType variable not fill it.
   /// Its will be retrieve latest manga, manhwa and manhua.

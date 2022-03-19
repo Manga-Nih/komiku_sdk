@@ -5,7 +5,7 @@ import 'package:komiku_sdk/models.dart';
 void main() {
   late Komiku komiku;
 
-  setUp(() => komiku = Komiku());
+  setUp(() => komiku = Komiku.instance);
 
   group('Komiku detail chapter', () {
     test('Get detail chapter - Martial Peak Chapter 1870', () async {
