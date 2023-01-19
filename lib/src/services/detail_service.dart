@@ -6,7 +6,7 @@ import 'package:universal_html/html.dart';
 
 class DetailService extends CoreService {
   Future<MangaDetail> manga(String slug) async {
-    String url = KomikuUrl.detailUrl + '/' + slug + '/';
+    String url = '${KomikuUrl.detailUrl}/$slug/';
 
     Document? document = await getBodyFromUrl(url);
     Map<String, dynamic> result = {};
@@ -102,7 +102,7 @@ class DetailService extends CoreService {
   }
 
   Future<ChapterDetail> chapter(String slug) async {
-    String url = KomikuUrl.chapterUrl + '/' + slug + '/';
+    String url = '${KomikuUrl.chapterUrl}/$slug/';
 
     Document? document = await getBodyFromUrl(url);
     Map<String, dynamic> result = {};

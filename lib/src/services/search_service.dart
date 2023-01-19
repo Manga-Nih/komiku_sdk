@@ -6,7 +6,7 @@ import 'package:universal_html/html.dart';
 
 class SearchService extends CoreService with MangaParser {
   Future<List<Manga>> search(String keyword) async {
-    String url = KomikuUrl.baseUrl2 + '/cari/?post_type=manga&s=' + keyword;
+    String url = '${KomikuUrl.baseUrl2}/cari/?post_type=manga&s=$keyword';
 
     Document? document = await getBodyFromUrl(url);
     List<Map<String, String?>> result = [];

@@ -77,13 +77,13 @@ class Genre {
   });
 
   static List<Genre> all() {
-    List<Genre> _genre = [];
+    List<Genre> genre = [];
 
     for (String item in _genreList) {
-      _genre.add(Genre(name: item, endpoint: Util.toSlug(item)));
+      genre.add(Genre(name: item, endpoint: Util.toSlug(item)));
     }
 
-    return _genre;
+    return genre;
   }
 
   static Genre? find(String genre) {
