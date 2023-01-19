@@ -22,11 +22,9 @@ class Komiku {
   static final Komiku _instance = Komiku._internal();
   static Komiku get instance => _instance;
 
-  /// Get latest manga/manhua/manhwa.
-  /// If mangaType variable not fill it.
-  /// Its will be retrieve latest manga, manhwa and manhua.
-  Future<List<LatestManga>> latest({MangaType? mangaType}) {
-    return _latestService.latest(mangaType);
+  /// Get latest manga.
+  Future<List<LatestManga>> latest() {
+    return _latestService.latest();
   }
 
   /// Get popular manga.

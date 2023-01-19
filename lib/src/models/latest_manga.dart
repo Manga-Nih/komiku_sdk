@@ -39,7 +39,7 @@ class LatestManga extends CoreManga {
 
   @override
   String toString() {
-    String print = 'Latest Manga';
+    String print = '\nLatest Manga';
     print += '\n Title\t\t\t: $title';
     print += '\n Thumbnail\t\t: $thumb';
     print += '\n Type\t\t\t: $typeName';
