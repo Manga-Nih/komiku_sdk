@@ -1,8 +1,8 @@
+import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:komiku_sdk/enum.dart';
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
-import 'package:test/test.dart';
 
 void main() {
   late Komiku komiku;
@@ -56,5 +56,5 @@ void main() {
       expect(popular.length, isNot(0));
       await expectResult(popular, isMangaType: true);
     });
-  }, timeout: const Timeout(Duration(minutes: 1)));
+  });
 }
