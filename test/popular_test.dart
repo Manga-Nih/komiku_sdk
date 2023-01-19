@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:komiku_sdk/enum.dart';
 import 'package:komiku_sdk/komiku_sdk.dart';
 import 'package:komiku_sdk/models.dart';
 
@@ -31,30 +30,6 @@ void main() {
 
       expect(popular.length, isNot(0));
       await expectResult(popular);
-    });
-
-    test('Get popular manga', () async {
-      List<PopularManga> popular =
-          await komiku.popular(mangaType: MangaType.manga);
-
-      expect(popular.length, isNot(0));
-      await expectResult(popular, isMangaType: true);
-    });
-
-    test('Get popular manhua', () async {
-      List<PopularManga> popular =
-          await komiku.popular(mangaType: MangaType.manhua);
-
-      expect(popular.length, isNot(0));
-      await expectResult(popular, isMangaType: true);
-    });
-
-    test('Get popular manhwa', () async {
-      List<PopularManga> popular =
-          await komiku.popular(mangaType: MangaType.manhwa);
-
-      expect(popular.length, isNot(0));
-      await expectResult(popular, isMangaType: true);
     });
   });
 }

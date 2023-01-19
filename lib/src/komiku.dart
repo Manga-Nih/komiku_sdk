@@ -29,13 +29,9 @@ class Komiku {
     return _latestService.latest(mangaType);
   }
 
-  /// Get popular manga/manhua/manhwa.
-  /// If mangaType variable not fill it.
-  /// Its will be retrieve popular manga, manhwa and manhua.
-  ///
-  /// [chapterEndpoint] always null, if [mangaType] filled.
-  Future<List<PopularManga>> popular({MangaType? mangaType}) {
-    return _popularService.popular(mangaType);
+  /// Get popular manga.
+  Future<List<PopularManga>> popular() {
+    return _popularService.popular();
   }
 
   /// Get search manga by keyword.

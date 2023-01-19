@@ -44,7 +44,7 @@ class PopularManga extends CoreManga {
 
   @override
   String toString() {
-    String print = 'Popular Manga';
+    String print = '\nPopular Manga';
     print += '\n Title\t\t\t: $title';
     print += '\n Thumbnail\t\t: $thumb';
     print += '\n Type\t\t\t: $typeName';
